@@ -1,5 +1,5 @@
 {
-    "name": "I18n-tracker",
+    "name": "i18n-tracker",
     "version": "0.0.0",
     "description": "Monitors your II18n translation files",
     "main": "index.js",
