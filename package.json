@@ -1,6 +1,6 @@
 {
     "name": "i18n-tracker",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Monitors your II18n translation files",
     "main": "index.js",
     "keywords": [
@@ -16,6 +16,6 @@
         "i18n-track": "node index.js"
     },
     "bin": {
-      "i18n-track": "bin/track.bin.js"
+        "i18n-track": "bin/track.bin.js"
     }
 }
