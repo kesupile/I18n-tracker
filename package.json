@@ -1,13 +1,18 @@
 {
     "name": "i18n-tracker",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Monitors your II18n translation files",
     "main": "index.js",
-    "keywords": ["i18n", "I18n", "manage", "track"],
+    "keywords": [
+        "i18n",
+        "I18n",
+        "manage",
+        "track"
+    ],
     "repository": "https://github.com/kesupile/I18n-tracker",
     "author": "Kesupile Kesupile <kesupilek@googlemail.com>",
     "license": "MIT",
     "scripts": {
-      "i18n-track": "node index.js"
+        "i18n-track": "node index.js"
     }
 }
