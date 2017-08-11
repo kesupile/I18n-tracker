@@ -14,5 +14,8 @@
     "license": "MIT",
     "scripts": {
         "i18n-track": "node index.js"
+    },
+    "bin": {
+      "i18n-track": "bin/track.bin.js"
     }
 }
