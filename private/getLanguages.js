@@ -9,7 +9,7 @@ function getLanguages(translations){
 
   let translationFiles = []
   _.forEach(translations, (value,key) => {
-    const translation = `${key}.js`
+    const translation = key
     translationFiles.push([translation, value])
   })
 
