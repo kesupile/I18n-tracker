@@ -17,5 +17,8 @@
     },
     "bin": {
         "i18n-track": "bin/track.bin.js"
+    },
+    "dependencies": {
+        "lodash": "^4.17.4"
     }
 }
