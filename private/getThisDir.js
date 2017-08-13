@@ -1,4 +1,4 @@
-function getThisDir(filename){
+module.exports = (filename) => {
   const dirArray = filename.split(`\\`)
   let dir = new String()
   for(let i=0; i < dirArray.length - 1; i++){
@@ -7,5 +7,3 @@ function getThisDir(filename){
   }
   return dir
 }
-
-module.exports = getThisDir
