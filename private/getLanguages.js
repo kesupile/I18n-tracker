@@ -1,6 +1,6 @@
 const _ = require('lodash')
 
-function getLanguages(translations){
+module.exports = (translations) => {
   if(!translations){
     throw new Error('Argument is required')
   } else if(typeof translations !== 'object'){
@@ -16,5 +16,3 @@ function getLanguages(translations){
   return translationFiles
 
 }
-
-module.exports = getLanguages
