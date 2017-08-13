@@ -1,14 +1,11 @@
-function checkExistance(dir, translations){
-  let exist = true
+module.exports = (dir, translations) => { //expecting an array
+  console.log('[CHECKEXISTANCE]');
   translations.forEach((translation) => {
     try {
       require(`${dir}\\${translation[0]}`)
     } catch (e) {
-      error = false
-      throw new Error(`${translation[1]} TRANSLATION FILE MISSING: ${translation[0]}`)
+      throw new Error(`${translation[1]} TRANSLATION FILE MISSING: ${translation[0]}.js`)
     }
   })
-  return exist
+  return true
 }
-
-module.exports = checkExistance
