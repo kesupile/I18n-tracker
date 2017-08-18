@@ -8,6 +8,7 @@ function Omissions(root){
   this.root = root
   this.omissions = new Array(0)
   this.props = new Array(0)
+  this.inspectProps = new Array(0)
 }
 
 Omissions.prototype.add = function (omission) {
@@ -16,6 +17,10 @@ Omissions.prototype.add = function (omission) {
 
 Omissions.prototype.addProp = function (prop) {
   this.props.push(prop)
+}
+
+Omissions.proptype.addInspectProp = function (prop) {
+  this.inspectProps.push(prop)
 }
 
 Omissions.prototype.logOmissions = function() {
