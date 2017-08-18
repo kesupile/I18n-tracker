@@ -19,7 +19,7 @@ Omissions.prototype.addProp = function (prop) {
   this.props.push(prop)
 }
 
-Omissions.proptype.addInspectProp = function (prop) {
+Omissions.prototype.addInspectProp = function (prop) {
   this.inspectProps.push(prop)
 }
 
