@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const colors = require('colors')
 
 const validateEnvironment = require('../private/validateEnvironment')
 const getLanguages = require('../private/getLanguages')
+const inspect = require('../private/inspect')
 
 //const processDir = process.cwd() //needed for node package
 // const configDir = `${processDir}/i18n-tracker.config.json`
@@ -18,10 +18,20 @@ try {
 } catch (e) {
   throw new Error('i18n-tracker.config.json missing')
 }
-console.log(config)
 
 //validate the environment
 const environmentValid = validateEnvironment(processDir, config)
-console.log(`environmentValid: ${environmentValid}`);
 
-//map out the structure of the base file
+const baseObj = require(`${processDir}/${config.base[0]}`)
+console.log(`base is:`);
+console.log(baseObj);
+
+const languages = getLanguages(config.translations)
+const german = require(`${processDir}/${languages[0][0]}`)
+console.log('german is: ');
+console.log(german);
+
+
+
+
+inspect(baseObj, languages[0][0], german)
