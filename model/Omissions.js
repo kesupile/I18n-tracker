@@ -24,5 +24,3 @@ Omissions.prototype.logOmissions = function() {
 }
 
 module.exports = Omissions
-
-const myOmission = new Omissions()
