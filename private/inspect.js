@@ -1,8 +1,7 @@
-const _ = require('lodash')
-
-const compare = require('../private/compare')
-
-const Omissions = require('../model/Omissions')
+const
+  _ = require('lodash'),
+  compare = require('../private/compare'),
+  Omissions = require('../model/Omissions')
 
 function trampoline  (f) {
 

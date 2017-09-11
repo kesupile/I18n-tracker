@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
+const
+  fs = require('fs'),
+  validateEnvironment = require('../private/validateEnvironment'),
+  getLanguages = require('../private/getLanguages'),
+  inspect = require('../private/inspect'),
 
-const validateEnvironment = require('../private/validateEnvironment')
-const getLanguages = require('../private/getLanguages')
-const inspect = require('../private/inspect')
-
-//const processDir = process.cwd() //needed for node package
-// const configDir = `${processDir}/i18n-tracker.config.json`
-const processDir = '../../test-client/translations' //temporary for testing
-const configDir = '../../test-client/translations/i18n-tracker.config.json' //temporary for testing
+  //const processDir = process.cwd() //needed for node package
+  // const configDir = `${processDir}/i18n-tracker.config.json`
+  processDir = '../../test-client/translations', //temporary for testing
+  configDir = '../../test-client/translations/i18n-tracker.config.json' //temporary for testing
 
 
 let config

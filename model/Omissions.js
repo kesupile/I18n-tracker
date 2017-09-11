@@ -1,7 +1,7 @@
-const colors = require('colors')
-const _ = require('lodash')
-
-const Nest = require('./Nest')
+const
+  colors = require('colors'),
+  _ = require('lodash'),
+  Nest = require('./Nest')
 
 function Omissions(root){
   if(!root || typeof root !== 'string'){
