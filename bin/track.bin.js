@@ -33,4 +33,5 @@ const german = require(`${processDir}/${languages[0][0]}`)
 
 
 
-inspect(baseObj, baseName, languages[0][0], german)
+const omissions = inspect(baseObj, baseName, languages[0][0], german)
+omissions.logOmissions()
