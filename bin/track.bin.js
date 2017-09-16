@@ -23,15 +23,14 @@ try {
 const environmentValid = validateEnvironment(processDir, config)
 
 const baseObj = require(`${processDir}/${config.base[0]}`)
-console.log(`base is:`);
-console.log(baseObj);
+const baseName = config.base[0]
+
 
 const languages = getLanguages(config.translations)
 const german = require(`${processDir}/${languages[0][0]}`)
-console.log('german is: ');
-console.log(german);
 
 
 
 
-inspect(baseObj, languages[0][0], german)
+
+inspect(baseObj, baseName, languages[0][0], german)
