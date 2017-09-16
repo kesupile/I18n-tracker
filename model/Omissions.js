@@ -27,9 +27,9 @@ Omissions.prototype.addProp = function(prop) {
   this.props.push(prop)
 }
 
-Omissions.prototype.addInspectProp = function(prop) {
-  this.nests.push(new Nest(prop))
+Omissions.prototype.addInspectProp = function(prop, nest) {
   this.inspectProps.push(prop)
+  this.nests.push(nest)
 }
 
 Omissions.prototype.logOmissions = function () {
