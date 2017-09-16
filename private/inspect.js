@@ -1,7 +1,8 @@
 const
   _ = require('lodash'),
   compare = require('../private/compare'),
-  Omissions = require('../model/Omissions')
+  Omissions = require('../model/Omissions'),
+  Nest = require('../model/Nest')
 
 function trampoline  (fn) {
 
@@ -15,18 +16,33 @@ function trampoline  (fn) {
 
 function inspectNest(omissions, baseObj, prop){
 
+  //we split it because prop is of the form: 'parent.child.grandchild'
+  const nestName = prop.split('.').pop();
+
   //get the nested Object
-  const nestedObj = _.get(baseObj, prop, null)
+  const nestedObj = _.get(baseObj, prop)
 
   //check for strings
-  return checkForString(omissions, baseObj, nestedObj)
+  return checkForString(omissions, baseObj, nestedObj, omissions.nests.find((nest) => nest.root === nestName))
 
 }
 
-function checkForString(omissions, baseObj, nestedObj) {
+function checkForString(omissions, baseObj, nestedObj, parentNest) {
+
+  parentNest ? console.log(`parentName: ${parentNest.root}`) : null
 
   _.forEach(nestedObj, (val, key) => {
-    typeof val === 'string' ? omissions.addProp(omissions.getKeyWithRoot(key)) : omissions.addInspectProp(omissions.getKeyWithRoot(key))
+    if(typeof val === 'string' && parentNest === null){
+      omissions.addProp(key)
+    } else if(typeof val === 'string' && parentNest) {
+      parentNest.addProp(key)
+    } else {
+      console.log(`key is: ${key}`)
+      const nest = new Nest(key)
+      nest.setFullRoot(omissions.getKeyWithRoot(key))
+      parentNest ? parentNest.addChild(nest) : null
+      omissions.addInspectProp(omissions.getKeyWithRoot(key), nest)
+    }
   })
 
   //if there are more props to inspect, inspect those props
@@ -44,32 +60,28 @@ function checkForString(omissions, baseObj, nestedObj) {
 // baseobject, name of baseobject language, name of translation language, translation object
 module.exports = (baseObj, baseName, transBaseName, translationObj) => {
 
-  console.log('about to log root');
-  console.log(baseName);
-
   let omissions = new Omissions(baseName)
   omissions.setInspectRoot('')
 
-  trampoline(checkForString(omissions, baseObj, baseObj))
+  trampoline(checkForString(omissions, baseObj, baseObj, null))
 
 
   console.log('------ FINISHED INSPECTING---------');
 
+  console.log('------ FINISHED COMPARING --------');
+
+  console.log(JSON.stringify(omissions.nests,null,4))
+
   console.log(omissions.props)
 
-  console.log(omissions.inspectProps)
+  console.log(omissions.inspectProps);
+
+  compare(omissions, translationObj)
+
+  return omissions
 
 
 
-
-
-
-  // //if the property is an string add it to the ommissions
-  // //if the property is an object add it to the inspectProps
-  // _.forEach(baseObj, (val, key) => {
-  //   typeof val === 'string' ? omissions.addProp(key) : omissions.addInspectProp(key)
-  // })
-  //
   // compare(omissions, translationObj)
   //
   // return omissions
