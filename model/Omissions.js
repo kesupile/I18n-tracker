@@ -8,10 +8,15 @@ function Omissions(root){
     throw new Error('Ommisions constructor requires a root property of type String')
   }
   this.root = root
+  this.inspectRoot = null
   this.omissions = new Array(0)
   this.props = new Array(0)
   this.inspectProps = new Array(0)
   this.nests = []
+}
+
+Omissions.prototype.setInspectRoot = function(root) {
+  this.inspectRoot = root
 }
 
 Omissions.prototype.add = function(omission) {
@@ -36,8 +41,16 @@ Omissions.prototype.logOmissions = function () {
   )
 }
 
-Omissions.prototype.addNest = function(prop) {
-  this.nests.push(new Nest(prop))
+Omissions.prototype.getKeyWithRoot = function(key){
+  if(this.inspectRoot === ''){
+    return key
+  } else {
+    return `${this.inspectRoot}.${key}`
+  }
 }
+
+// Omissions.prototype.addNest = function(prop) {
+//   this.nests.push(new Nest(prop))
+// }
 
 module.exports = Omissions
