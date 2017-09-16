@@ -1,5 +1,10 @@
-function Nests(root) {
+function Nest(root) {
   this.root = root
+  this.doesExist = null
 }
 
-module.exports = Nests
+Nest.prototype.setExistance = function(bool){
+  this.doesExist = bool
+}
+
+module.exports = Nest
