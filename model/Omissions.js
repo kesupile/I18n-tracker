@@ -28,6 +28,7 @@ Omissions.prototype.addProp = function(prop) {
 }
 
 Omissions.prototype.addInspectProp = function(prop) {
+  this.nests.push(new Nest(prop))
   this.inspectProps.push(prop)
 }
 
@@ -48,9 +49,5 @@ Omissions.prototype.getKeyWithRoot = function(key){
     return `${this.inspectRoot}.${key}`
   }
 }
-
-// Omissions.prototype.addNest = function(prop) {
-//   this.nests.push(new Nest(prop))
-// }
 
 module.exports = Omissions
