@@ -30,8 +30,6 @@ function inspectNest(omissions, baseObj){
 
 function checkForString(omissions, baseObj, nestedObj, parentNest) {
 
-  parentNest ? console.log(`parentName: ${parentNest.root}`) : null
-
   _.forEach(nestedObj, (val, key) => {
     if(typeof val === 'string' && parentNest === null){
       omissions.addProp(key)
