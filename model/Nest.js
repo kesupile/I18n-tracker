@@ -1,4 +1,7 @@
+const UUID = require('uuid/v4')
+
 function Nest(root) {
+  this.id = UUID()
   this.root = root
   this.doesExist = null
   this.children = new Array(0)
