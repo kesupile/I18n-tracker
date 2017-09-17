@@ -1,13 +1,15 @@
 const
   colors = require('colors'),
   _ = require('lodash'),
-  Nest = require('./Nest')
+  Nest = require('./Nest'),
+  { logOmissions } = require('./PrototypeMethods')
 
 function Omissions(root){
   if(!root || typeof root !== 'string'){
     throw new Error('Ommisions constructor requires a root property of type String')
   }
   this.root = root
+  this.pristine = true
   this.inspectRoot = null
   this.omissions = new Array(0)
   this.props = new Array(0)
@@ -15,8 +17,22 @@ function Omissions(root){
   this.nests = []
 }
 
-Omissions.prototype.setInspectRoot = function(root) {
-  this.inspectRoot = root
+Omissions.prototype.setInspectRoot = function() {
+
+  let root
+
+  if(this.pristine){
+
+    /* if this is the first time we are setting the inspectRoot
+    then set id=null and rootName=emptyString */
+
+    root = [null,'']
+    this.pristine = false
+  } else {
+    root = this.inspectProps.shift()
+  }
+  this.inspectId = root[0]
+  this.inspectRoot = root[1]
 }
 
 Omissions.prototype.add = function(omission) {
@@ -28,26 +44,19 @@ Omissions.prototype.addProp = function(prop) {
 }
 
 Omissions.prototype.addInspectProp = function(prop, nest) {
-  this.inspectProps.push(prop)
+  this.inspectProps.push([nest.id, prop])
   this.nests.push(nest)
 }
 
-Omissions.prototype.logOmissions = function () {
-  let omString = ''
-  _.forEach(this.omissions, (omission) => {
-    omString += `   -- ${omission} \n`
-  })
-  console.log(
-    `  ${String(this.root).red} \n${String(omString).yellow}`
-  )
-}
-
-Omissions.prototype.getKeyWithRoot = function(key){
+Omissions.prototype.getPropAsRoot = function(key){
   if(this.inspectRoot === ''){
     return key
   } else {
     return `${this.inspectRoot}.${key}`
   }
 }
+
+Omissions.prototype.logOmissions = logOmissions
+
 
 module.exports = Omissions
