@@ -11,7 +11,6 @@ function Omissions(root){
   this.root = root
   this.inspectId = null
   this.inspectRoot = ''
-  this.omissions = []
   this.props = []
   this.inspectProps = []
   this.nests = []
@@ -22,10 +21,6 @@ Omissions.prototype.setInspectRoot = function() {
   const root = this.inspectProps.shift()
   this.inspectId = root[0]
   this.inspectRoot = root[1]
-}
-
-Omissions.prototype.add = function(omission) {
-  this.omissions.push(omission)
 }
 
 Omissions.prototype.addProp = function(prop) {
@@ -52,7 +47,15 @@ Omissions.prototype.newComparison = function(langName){
 
 }
 
-Omissions.prototype.logOmissions = logOmissions
+Omissions.prototype.logOmissions = function(languages) {
+
+  this.comparisons.forEach((comparison) => {
+    const lang = languages.filter((language) => language[0] === comparison.language)
+    console.log(`\n \n \n             *** ${lang[0][1]} ***`);
+    comparison.logOmissions()
+    comparison.nestOmissions.forEach((nest) => nest.logOmissions(comparison.language))
+  })
+}
 
 
 module.exports = Omissions
