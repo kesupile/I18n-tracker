@@ -10,7 +10,7 @@ function Comparison(language){
 }
 
 Comparison.prototype.isNotOmitted = function(nest){
-  //the nest doesn't exist if it is in the NestOmissions and it's state is
+  //the nest doesn't exist if it is in the NestOmissions and neset.doesExist===false
   return !this.nestOmissions.find((nestOmission) => nest.id === nestOmission.id && !nestOmission.doesExist)
 }
 
