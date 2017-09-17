@@ -1,7 +1,7 @@
 const
   colors = require('colors'),
-  _ = require('lodash'),
   Nest = require('./Nest'),
+  Comparison = require('./Comparison'),
   { logOmissions } = require('./PrototypeMethods')
 
 function Omissions(root){
@@ -11,10 +11,11 @@ function Omissions(root){
   this.root = root
   this.inspectId = null
   this.inspectRoot = ''
-  this.omissions = new Array(0)
-  this.props = new Array(0)
-  this.inspectProps = new Array(0)
+  this.omissions = []
+  this.props = []
+  this.inspectProps = []
   this.nests = []
+  this.comparisons = []
 }
 
 Omissions.prototype.setInspectRoot = function() {
@@ -42,6 +43,13 @@ Omissions.prototype.getPropAsRoot = function(key){
   } else {
     return `${this.inspectRoot}.${key}`
   }
+}
+
+Omissions.prototype.newComparison = function(langName){
+  const comparison = new Comparison(langName)
+  this.comparisons.push(comparison)
+  return comparison
+
 }
 
 Omissions.prototype.logOmissions = logOmissions
