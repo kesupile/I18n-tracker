@@ -19,13 +19,13 @@ Comparison.prototype.addOmittedNest = function(nest){
   nest.pushMyselfIntoOmissions(this.nestOmissions)
 }
 
-Comparison.prototype.addOmittedNestProps = function(nest) {
+Comparison.prototype.addOmittedNestProps = function(nest){
   this.nestOmissions.push(nest)
 }
 
 Comparison.prototype.addOmission = addOmission
 
-Comparison.prototype.logOmissions = function() {
+Comparison.prototype.logOmissions = function(){
   let omString = ''
   this.omissions.forEach((omission) => {
     omString += `   -- ${omission} \n`
