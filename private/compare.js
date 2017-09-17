@@ -1,10 +1,41 @@
-/* ------- for debugging --------------*/
+const { forEach, get } = require('lodash')
 
-require('colors')
+function compareObject(omissions, langObj, comparison){
+  omissions.nests.forEach((nest) => {
 
-const { forEach } = require('lodash')
+    // don't look for the object if its parent has been omitted
+    if(comparison.isNotOmitted(nest)){
 
+      const clone = nest.clone()
 
+      //check if it exists
+      const nestedObj = get(langObj, nest.fullRoot, false)
+
+      //if the nest doesnt exist add a copy to nestOmissions
+      if(!nestedObj){
+
+        clone.setExistance(false)
+        comparison.addOmittedNest(clone)
+
+      } else { //otherwise check its props
+
+        nest.props.forEach((prop) => {
+
+          if(!nestedObj[prop]){
+            clone.addOmission(prop)
+          }
+        })
+
+        if(clone.omissions.length > 0){
+          clone.setExistance(true)
+          comparison.addOmittedNestProps(clone)
+        }
+
+      }
+
+    }
+  })
+}
 
 
 
@@ -18,18 +49,6 @@ module.exports = (omissions, langName, langObj) => {
   })
 
 
-  /*
-  //check the basic props first
-  _.forEach(omissions.props, (value) => {
-    //check whether the prop exists
-    // translationFile[value] ? null : omissions.add(value)
-    _.get(translationFile, value, null) === null ? omissions.add(value) : null
-  }) */
+  compareObject(omissions, langObj, comparison)
 
-  //check the nested props next
-
-  //1. does the parent exist? ------ THIS IS A LOOP
-    //NO ----- set all dependacies as non existant
-
-    //YES ---- inspect each dependancy
 }
