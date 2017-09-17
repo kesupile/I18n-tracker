@@ -9,8 +9,8 @@ function Omissions(root){
     throw new Error('Ommisions constructor requires a root property of type String')
   }
   this.root = root
-  this.pristine = true
-  this.inspectRoot = null
+  this.inspectId = null
+  this.inspectRoot = ''
   this.omissions = new Array(0)
   this.props = new Array(0)
   this.inspectProps = new Array(0)
@@ -18,19 +18,7 @@ function Omissions(root){
 }
 
 Omissions.prototype.setInspectRoot = function() {
-
-  let root
-
-  if(this.pristine){
-
-    /* if this is the first time we are setting the inspectRoot
-    then set id=null and rootName=emptyString */
-
-    root = [null,'']
-    this.pristine = false
-  } else {
-    root = this.inspectProps.shift()
-  }
+  const root = this.inspectProps.shift()
   this.inspectId = root[0]
   this.inspectRoot = root[1]
 }
