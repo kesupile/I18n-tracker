@@ -16,38 +16,33 @@ function trampoline  (fn) {
 
 function inspectNest(omissions, baseObj){
 
-  //we split it because prop is of the form: 'parent.child.grandchild'
-  const prop = omissions.inspectRoot
-  const nestName = prop.split('.').pop();
-
   //get the nested Object
-  const nestedObj = _.get(baseObj, prop)
+  const nestedObj = _.get(baseObj, omissions.inspectRoot)
 
   //check for strings
-  return checkForString(omissions, baseObj, nestedObj, omissions.nests.find((nest) => nest.root === nestName))
+  return checkForString(omissions, baseObj, nestedObj, omissions.nests.find((nest) => nest.id === omissions.inspectId))
 
 }
 
 function checkForString(omissions, baseObj, nestedObj, parentNest) {
 
-  _.forEach(nestedObj, (val, key) => {
+  _.forEach(nestedObj, (val, prop) => {
     if(typeof val === 'string' && parentNest === null){
-      omissions.addProp(key)
+      omissions.addProp(prop)
     } else if(typeof val === 'string' && parentNest) {
-      parentNest.addProp(key)
+      parentNest.addProp(prop)
     } else {
-      console.log(`key is: ${key}`)
-      const nest = new Nest(key)
-      nest.setFullRoot(omissions.getKeyWithRoot(key))
+      const nest = new Nest(prop)
+      const root = omissions.getPropAsRoot(prop)
+      nest.setFullRoot(root)
       parentNest ? parentNest.addChild(nest) : null
-      omissions.addInspectProp(omissions.getKeyWithRoot(key), nest)
+      omissions.addInspectProp(root, nest)
     }
   })
 
   //if there are more props to inspect, inspect those props
   if(omissions.inspectProps.length > 0){
-    const prop = omissions.inspectProps.shift()
-    omissions.setInspectRoot(prop)
+    omissions.setInspectRoot()
     return inspectNest(omissions, baseObj)
   }
 
@@ -60,7 +55,7 @@ function checkForString(omissions, baseObj, nestedObj, parentNest) {
 module.exports = (baseObj, baseName, transBaseName, translationObj) => {
 
   let omissions = new Omissions(baseName)
-  omissions.setInspectRoot('')
+  omissions.setInspectRoot()
 
   trampoline(checkForString(omissions, baseObj, baseObj, null))
 
@@ -79,11 +74,4 @@ module.exports = (baseObj, baseName, transBaseName, translationObj) => {
 
   return omissions
 
-
-
-  // compare(omissions, translationObj)
-  //
-  // return omissions
 }
-
-//Documents/Orion/I18n-tracker/dev/I18n-tracker
