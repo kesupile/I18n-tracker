@@ -1,4 +1,6 @@
-const UUID = require('uuid/v4')
+const
+  UUID = require('uuid/v4'),
+  { logOmissions } = require('./PrototypeMethods')
 
 function Nest(root) {
   this.id = UUID()
@@ -30,5 +32,7 @@ Nest.prototype.addProp = function(prop){
 Nest.prototype.setFullRoot = function(root){
   this.fullRoot = root
 }
+
+Nest.prototype.logOmissions = logOmissions
 
 module.exports = Nest
