@@ -34,7 +34,6 @@ Nest.prototype.setExistance = function(bool){
   }
 }
 
-//keep track of children so that we can alter their existance
 Nest.prototype.addChild = function(nest){
   this.children.push(nest)
 }
