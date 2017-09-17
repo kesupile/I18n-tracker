@@ -1,10 +1,15 @@
 const
   colours = require('colors'),
-  _ = require('lodash')
+  { forEach } = require('lodash')
+
+
+module.exports.addOmission = function(prop){
+  this.omissions.push(prop)
+}
 
 module.exports.logOmissions = function logOmissions() {
   let omString = ''
-  _.forEach(this.omissions, (omission) => {
+  forEach(this.omissions, (omission) => {
     omString += `   -- ${omission} \n`
   })
   console.log(
