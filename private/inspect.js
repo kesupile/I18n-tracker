@@ -14,9 +14,10 @@ function trampoline  (fn) {
 
 }
 
-function inspectNest(omissions, baseObj, prop){
+function inspectNest(omissions, baseObj){
 
   //we split it because prop is of the form: 'parent.child.grandchild'
+  const prop = omissions.inspectRoot
   const nestName = prop.split('.').pop();
 
   //get the nested Object
@@ -49,7 +50,7 @@ function checkForString(omissions, baseObj, nestedObj, parentNest) {
   if(omissions.inspectProps.length > 0){
     const prop = omissions.inspectProps.shift()
     omissions.setInspectRoot(prop)
-    return inspectNest(omissions, baseObj, prop)
+    return inspectNest(omissions, baseObj)
   }
 
   return true
