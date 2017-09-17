@@ -31,16 +31,8 @@ const baseName = config.base[0]
 const languages = getLanguages(config.translations)
 const german = require(`${processDir}/${languages[0][0]}`)
 
-console.log(languages);
-
 const omissions = inspect(baseObj, baseName)
 
-// const copy = omissions.nests.slice()
-
-// console.log('--------------slice is:-------------------');
-// console.log(JSON.stringify(copy,null,4));
-
-require('colors') /* ---------- FOR DEBUGGING -------------- */
 
 forEach(languages, (language) => {
 
@@ -49,7 +41,4 @@ forEach(languages, (language) => {
 
 })
 
-console.log(JSON.stringify(omissions.comparisons, null, 4).yellow);
-
-// compare()
-//omissions.logOmissions()
+omissions.logOmissions(languages)
