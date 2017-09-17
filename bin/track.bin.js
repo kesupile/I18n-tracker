@@ -6,7 +6,6 @@ const
   getLanguages = require('../private/getLanguages'),
   inspect = require('../private/inspect'),
   compare = require('../private/compare'),
-  { forEach } = require('lodash')
 
   //const processDir = process.cwd() //needed for node package
   //const configDir = `${processDir}/i18n-tracker.config.json`
@@ -34,7 +33,7 @@ const german = require(`${processDir}/${languages[0][0]}`)
 const omissions = inspect(baseObj, baseName)
 
 
-forEach(languages, (language) => {
+languages.forEach((language) => {
 
   const langObj = require(`${processDir}/${language[0]}`)
   compare(omissions, language[0], langObj)
