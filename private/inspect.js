@@ -1,6 +1,5 @@
 const
-  _ = require('lodash'),
-  compare = require('../private/compare'),
+  { get, forEach } = require('lodash'),
   Omissions = require('../model/Omissions'),
   Nest = require('../model/Nest')
 
@@ -17,7 +16,7 @@ function trampoline  (fn) {
 function inspectNest(omissions, baseObj){
 
   //get the nested Object
-  const nestedObj = _.get(baseObj, omissions.inspectRoot)
+  const nestedObj = get(baseObj, omissions.inspectRoot)
 
   //check for strings
   return checkForString(omissions, baseObj, nestedObj, omissions.nests.find((nest) => nest.id === omissions.inspectId))
@@ -26,7 +25,7 @@ function inspectNest(omissions, baseObj){
 
 function checkForString(omissions, baseObj, nestedObj, parentNest) {
 
-  _.forEach(nestedObj, (val, prop) => {
+  forEach(nestedObj, (val, prop) => {
     if(typeof val === 'string' && parentNest === null){
       omissions.addProp(prop)
     } else if(typeof val === 'string' && parentNest) {
@@ -51,8 +50,8 @@ function checkForString(omissions, baseObj, nestedObj, parentNest) {
 }
 
 
-// baseobject, name of baseobject language, name of translation language, translation object
-module.exports = (baseObj, baseName, transBaseName, translationObj) => {
+// baseobject, name of baseobject language
+module.exports = (baseObj, baseName) => {
 
   const omissions = new Omissions(baseName)
 
@@ -62,14 +61,6 @@ module.exports = (baseObj, baseName, transBaseName, translationObj) => {
   console.log('------ FINISHED INSPECTING---------');
 
   console.log('------ FINISHED COMPARING --------');
-
-  console.log(JSON.stringify(omissions.nests,null,4))
-
-  console.log(omissions.props)
-
-  console.log(omissions.inspectProps);
-
-  compare(omissions, translationObj)
 
   return omissions
 
