@@ -3,7 +3,7 @@ const
   Omissions = require('../model/Omissions'),
   Nest = require('../model/Nest')
 
-function trampoline  (fn) {
+function trampoline(fn){
 
   while (typeof fn === 'function'){
     fn = fn()
@@ -56,11 +56,6 @@ module.exports = (baseObj, baseName) => {
   const omissions = new Omissions(baseName)
 
   trampoline(checkForString(omissions, baseObj, baseObj, null))
-
-
-  console.log('------ FINISHED INSPECTING---------');
-
-  console.log('------ FINISHED COMPARING --------');
 
   return omissions
 
