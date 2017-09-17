@@ -54,8 +54,7 @@ function checkForString(omissions, baseObj, nestedObj, parentNest) {
 // baseobject, name of baseobject language, name of translation language, translation object
 module.exports = (baseObj, baseName, transBaseName, translationObj) => {
 
-  let omissions = new Omissions(baseName)
-  omissions.setInspectRoot()
+  const omissions = new Omissions(baseName)
 
   trampoline(checkForString(omissions, baseObj, baseObj, null))
 
