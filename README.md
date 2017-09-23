@@ -134,7 +134,7 @@ $ i18n-track
 ```
 
 ##### Result
-[](./images/track_example.png)
+[](https://github.com/kesupile/I18n-tracker/blob/feature/track/images/track_example.PNG?raw=true)
 
 ## Upcoming Features
 fjsdajfaprjw-q
