@@ -20,8 +20,8 @@ npm install -g i18n-tracker
 Create a translations folder where you will store all the translation files. Create the following files: **i18n-tracker.config.json**, **baseLanguage.js** and **translationLanguage.js** (create a one for each supported language).
 
 ##### i18n-tracker.config.json
-Two required properties: base (Array), translations (Object)
-```json
+...Two required properties: base (Array), translations (Object)
+...```json
 {
   "base": ["en", "English"],
   "translations": {
