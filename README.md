@@ -17,11 +17,11 @@ npm install -g i18n-tracker
 ```
 
 #### File Structure
-Create a translations folder where you will store all the translation files. Create the following files: **i18n-tracker.config.json**, **baseLanguage.js** and **translationLanguage.js** (create a one for each supported language).
+Create a translations folder where you will store all the translation files. Create the following files: **i18n-tracker.config.json** and **translationLanguage.js** (create a one for each supported language).
 
 ##### i18n-tracker.config.json
-...Two required properties: base (Array), translations (Object)
-...```json
+Two required properties: base (Array), translations (Object)
+```json
 {
   "base": ["en", "English"],
   "translations": {
@@ -31,6 +31,46 @@ Create a translations folder where you will store all the translation files. Cre
 }
 ```
 
+##### en.js
+```javascript
+module.exports = {
+  television: 'television',
+  chair: 'chair',
+  kitchen: {
+    stove: 'stove',
+    sink: 'sink'
+  },
+  bedroom: {
+    bed: 'bed',
+    wardrobe: 'wardrobe'
+  }
+}
+```
+
+##### de.js
+```javascript
+module.exports = {
+  chair: 'Sessel',
+  bedroom: {
+    bed: 'Bett',
+    wardrobe: 'Kleiderschrank'
+  }
+}
+```
+
+##### fr.js
+```javascript
+module.exports = {
+  chair: 'chaise',
+  kitchen: {
+    stove: 'poêle'
+  },
+  bedroom: {
+    bed: 'lit',
+    wardrobe: 'garde-robe'
+  }
+}
+```
 
 ## Get Translations
 
