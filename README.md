@@ -30,6 +30,7 @@ Two required properties: base (Array), translations (Object)
   }
 }
 ```
+Add this file to your **gitignore** if you don't want to push it to github
 
 ##### ./en.js
 ```javascript
