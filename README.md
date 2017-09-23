@@ -10,9 +10,26 @@ i18n-tracker is a command line tool that monitors the state of your I18n transla
 
 ## Setup
 
-fdaisjfkadskfjkjadskfjkadjk fjkadjfjakdfjksdajkfjasdjfkjakds fj
-fsdajfkjdaklfj
-sdajfkjasd
+#### Install i18n-tracker globally
+```
+npm install -g i18n-tracker
+
+```
+
+#### File Structure
+Create a translations folder where you will store all the translation files. Create the following files: **i18n-tracker.config.json**, **baseLanguage.js** and **translationLanguage.js** (create a one for each supported language).
+
+##### i18n-tracker.config.json
+Two required properties: base (Array), translations (Object)
+```json
+{
+  "base": ["en", "English"],
+  "translations": {
+    "de": "German",
+    "fr": "French"
+  }
+}
+```
 
 
 ## Get Translations
