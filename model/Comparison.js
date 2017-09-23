@@ -7,6 +7,7 @@ function Comparison(language){
   this.root = language
   this.omissions = []
   this.nestOmissions = []
+  this.clear = true
 }
 
 Comparison.prototype.isNotOmitted = function(nest){
@@ -17,15 +18,18 @@ Comparison.prototype.isNotOmitted = function(nest){
 Comparison.prototype.addOmittedNest = function(nest){
   //add the nest and its children
   nest.pushMyselfIntoOmissions(this.nestOmissions)
+  this.switchClear()
 }
 
 Comparison.prototype.addOmittedNestProps = function(nest){
   this.nestOmissions.push(nest)
+  this.switchClear()
 }
 
 Comparison.prototype.addOmission = addOmission
 
 Comparison.prototype.logOmissions = function(){
+  
   let omString = ''
   this.omissions.forEach((omission) => {
     omString += `   -- ${omission} \n`
@@ -33,6 +37,10 @@ Comparison.prototype.logOmissions = function(){
   console.log(
     `  ${String(this.root).red} \n${String(omString).yellow}`
   )
+}
+
+Comparison.prototype.switchClear = function() {
+  this.clear = false
 }
 
 module.exports = Comparison
