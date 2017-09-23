@@ -29,7 +29,9 @@ Comparison.prototype.addOmittedNestProps = function(nest){
 Comparison.prototype.addOmission = addOmission
 
 Comparison.prototype.logOmissions = function(){
-  
+
+  if(this.omissions.length === 0){return }
+
   let omString = ''
   this.omissions.forEach((omission) => {
     omString += `   -- ${omission} \n`
