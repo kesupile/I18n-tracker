@@ -3,8 +3,8 @@ i18n-tracker is a command line tool that monitors the state of your I18n transla
 
 ## Contents
 1. [Setup](#setup)
-2. [Get Translations](#get-translations)
-3. [Track](#track)
+2. [Track](#track)
+3. [Get Translations](#get-translations)
 4. [Upcoming Features](#upcoming-features)
 
 
@@ -72,6 +72,14 @@ module.exports = {
 }
 ```
 
+## Track
+i18n-tracker is installed globally and so can be used from any translation directory. Track will inspect translation files and log any discrepancies to the console.
+
+##### Command
+```
+$ i18n-track
+```
+
 ## Get Translations
 
 ##### Install i18n-tracker-helper to merge files
@@ -123,21 +131,8 @@ I18n.setTranslations(translations)
 
 ```
 
-
-
-## Track
-i18n-tracker is installed globally and so can be used from any translation directory. Track will inspect translation files and log any discrepancies to the console.
-
-##### Command
-```
-$ i18n-track
-```
-
 ##### Result
-![alt text](./images/track_example.png "i18n-track result")
+![alt text](https://github.com/kesupile/I18n-tracker/tree/master/images/track_example.PNG?raw=true "i18n-track result")
 
 ## Upcoming Features
-fjsdajfaprjw-q
-
-jf aprjfilaejhfa
-f jsaipfjh
+In version 1.1.0 i18n-tracker will automatically populate missing fields. Stay tuned!
