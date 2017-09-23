@@ -1,5 +1,4 @@
 const fs = require('fs')
-const _ = require('lodash')
 
 const getLanguages = require('./private/getLanguages')
 const checkExistance = require('./private/checkExistance')
@@ -25,7 +24,7 @@ function getTranslations() {
   if(allExist && baseExist){
     const base = require(`${thisDir}\\${config.base[0]}`)
     returnObj[config.base[0]] = base
-    _.forEach(translations, (translation) => {
+    translations.forEach((translation) => {
       const thisTrans = require(`${thisDir}\\${translation[0]}`)
       returnObj[translation[0]] = thisTrans
     })
@@ -35,6 +34,5 @@ function getTranslations() {
 
 
 module.exports = {
-  logThisDir: logThisDir,
   getTranslations: getTranslations
 }
