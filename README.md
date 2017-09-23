@@ -80,6 +80,9 @@ i18n-tracker is installed globally and so can be used from any translation direc
 $ i18n-track
 ```
 
+##### Result
+![alt text](https://github.com/kesupile/I18n-tracker/blob/master/images/track_example.PNG?raw=true "i18n-track result")
+
 ## Get Translations
 
 ##### Install i18n-tracker-helper to merge files
@@ -131,8 +134,8 @@ I18n.setTranslations(translations)
 
 ```
 
-##### Result
-![alt text](https://github.com/kesupile/I18n-tracker/tree/master/images/track_example.PNG?raw=true "i18n-track result")
-
 ## Upcoming Features
-In version 1.1.0 i18n-tracker will automatically populate missing fields. Stay tuned!
+1. In version 1.1.0 i18n-tracker will automatically populate missing fields.
+2. In version 1.2.0 i18n-tracker will be able to track additional props in translation files that are missing in the base file
+
+Feel free to request features for this or the [i18n-tracker-helper](https://github.com/kesupile/i18n-tracker-helper) module. Stay tuned!
