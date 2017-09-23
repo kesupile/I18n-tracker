@@ -7,10 +7,10 @@ const
   inspect = require('../private/inspect'),
   compare = require('../private/compare'),
 
-  //const processDir = process.cwd() //needed for node package
-  //const configDir = `${processDir}/i18n-tracker.config.json`
-  processDir = '../../test-client/translations', //temporary for testing
-  configDir = '../../test-client/translations/i18n-tracker.config.json' //temporary for testing
+  const processDir = process.cwd() //needed for node package
+  const configDir = `${processDir}/i18n-tracker.config.json`
+  // processDir = '../../test-client/translations', //temporary for testing
+  // configDir = '../../test-client/translations/i18n-tracker.config.json' //temporary for testing
 
 
 let config
