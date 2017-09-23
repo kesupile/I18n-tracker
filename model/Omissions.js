@@ -49,7 +49,21 @@ Omissions.prototype.newComparison = function(langName){
 
 Omissions.prototype.logOmissions = function(languages) {
 
+  let omissions = false
+
   this.comparisons.forEach((comparison) => {
+    if(!comparison.clear){omissions = true}
+  })
+
+  if(!omissions){
+    console.log(String(`\n \n         NO MISSING PROPS IN TRANSLATIONS     `).yellow)
+    return
+  }
+
+  this.comparisons.forEach((comparison) => {
+
+    if(comparison.clear){return }
+
     const lang = languages.filter((language) => language[0] === comparison.language)
     console.log(`\n \n \n             *** ${lang[0][1]} ***`);
     comparison.logOmissions()
