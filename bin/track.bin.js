@@ -5,7 +5,7 @@ const
   validateEnvironment = require('../private/validateEnvironment'),
   getLanguages = require('../private/getLanguages'),
   inspect = require('../private/inspect'),
-  compare = require('../private/compare'),
+  compare = require('../private/compare')
 
   const processDir = process.cwd() //needed for node package
   const configDir = `${processDir}/i18n-tracker.config.json`
