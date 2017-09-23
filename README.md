@@ -12,14 +12,14 @@ i18n-tracker is a command line tool that monitors the state of your I18n transla
 
 #### Install i18n-tracker globally
 ```
-npm install -g i18n-tracker
+$ npm install -g i18n-tracker
 
 ```
 
 #### File Structure
 Create a translations folder where you will store all the translation files. Create the following files: **i18n-tracker.config.json** and **translationLanguage.js** (create a one for each supported language).
 
-##### i18n-tracker.config.json
+##### ./i18n-tracker.config.json
 Two required properties: base (Array), translations (Object)
 ```json
 {
@@ -31,7 +31,7 @@ Two required properties: base (Array), translations (Object)
 }
 ```
 
-##### en.js
+##### ./en.js
 ```javascript
 module.exports = {
   television: 'television',
@@ -47,7 +47,7 @@ module.exports = {
 }
 ```
 
-##### de.js
+##### ./de.js
 ```javascript
 module.exports = {
   chair: 'Sessel',
@@ -58,7 +58,7 @@ module.exports = {
 }
 ```
 
-##### fr.js
+##### ./fr.js
 ```javascript
 module.exports = {
   chair: 'chaise',
@@ -74,13 +74,67 @@ module.exports = {
 
 ## Get Translations
 
-fdjsnfjsdakfjdkfj afjdkf adjfkajfad
+##### Install i18n-tracker-helper to merge files
+```javascript
+$ npm install --save i18n-tracker-helper
+```
+
+In your i18n file use **getTranslations** to merge
+
+```javascript
+const I18n = require('react-i18nify').I18n
+const { getTranslations } = require('i18n-tracker-helper')
+
+const translations = getTranslations()
+/* returns
+{
+    en: {
+        television: 'television',
+        chair: 'chair',
+        kitchen: {
+            stove: 'stove',
+            sink: 'sink'
+        },
+        bedroom: {
+            bed: 'bed',
+            wardrobe: 'wardrobe'
+        }
+    },
+    de: {
+        chair: 'Sessel',
+        bedroom: {
+            bed: 'Bett',
+            wardrobe: 'Kleiderschrank'
+        }
+    },
+    fr: {
+        chair: 'chaise',
+        kitchen: {
+            stove: 'poêle'
+        },
+        bedroom: {
+            bed: 'lit',
+            wardrobe": "garde'robe'
+        }
+    }
+} */
+
+I18n.setTranslations(translations)
+
+```
+
 
 
 ## Track
-fjsdkajfk dasf fsahoufehpt
-reupiqer
-rjewrpqewriewjir
+i18n-tracker is installed globally and so can be used from any translation directory. Track will inspect translation files and log any discrepancies to the console.
+
+##### Command
+```
+$ i18n-track
+```
+
+##### Result
+[](./images/track_example.png)
 
 ## Upcoming Features
 fjsdajfaprjw-q
