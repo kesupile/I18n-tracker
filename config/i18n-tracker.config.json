@@ -1,0 +1,8 @@
+{
+  "base": ["en", "English"],
+  "translations": {
+    "de": "German",
+    "fr": "French",
+    "es": "Spanish"
+  }
+}
