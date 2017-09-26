@@ -5,14 +5,8 @@ const checkExistance = require('./private/checkExistance')
 const getThisDir = require('./private/getThisDir')
 
 const thisDir = getThisDir(module.parent.filename)
-const configDir = './i18n-tracker.config.json'
+const configDir = thisDir + '/i18n-tracker.config.json'
 const config = JSON.parse(fs.readFileSync(configDir, 'utf8'))
-
-
-function logThisDir() {
-  console.log(thisDir);
-}
-
 
 function getTranslations() {
   const translations = getLanguages(config.translations)
