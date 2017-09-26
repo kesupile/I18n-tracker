@@ -1,5 +1,6 @@
 # i18n-tracker
 i18n-tracker is a command line tool that monitors the state of your I18n translation files and makes sure that none of your translation properties slip through the cracks. This package aims to make managing your translations simpler and works well with i18n based packages such as [this](https://github.com/JSxMachina/react-i18nify).
+i18n-tracker logs messages in either English, Spanish, German and French, depending on what locale your OS is set to.
 
 ## Contents
 1. [Setup](#setup)
@@ -136,8 +137,7 @@ I18n.setTranslations(translations)
 ```
 
 ## Upcoming Features
-1. Version 1.1.0 will have support for German, French and Spanish (ironic, i know ;) )
-2. In version 1.2.0 i18n-tracker will automatically populate missing fields.
-3. In version 1.3.0 i18n-tracker will be able to track additional props in translation files that are missing in the base file
+1. In version 1.2.0 i18n-tracker will automatically populate missing fields.
+2. In version 1.3.0 i18n-tracker will be able to track additional props in translation files that are missing in the base file
 
 Feel free to request features for this or the [i18n-tracker-helper](https://github.com/kesupile/i18n-tracker-helper) module. Stay tuned!
