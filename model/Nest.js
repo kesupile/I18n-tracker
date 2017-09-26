@@ -1,7 +1,8 @@
 const
   UUID = require('uuid/v4'),
   colors = require('colors'),
-  { addOmission } = require('./PrototypeMethods')
+  { addOmission } = require('./PrototypeMethods'),
+  logError = require('../private/logError')
 
 function Nest(root, cloneProps) {
   if(!cloneProps){
@@ -63,24 +64,30 @@ Nest.prototype.clone = function(parent){
 }
 
 Nest.prototype.logOmissions = function(language){
-  const logRoot = `${language}.${this.fullRoot}`
 
-  // if triggeredByParent===false AND doesExist===true we know it is the
-  // child of a missing object, so there is no need to show it to the user
-  if(this.doesExist === false && !this.parentTriggered){
-    console.log(
-            `  ${String('Missing object: ').red}${String(logRoot).yellow}\n`
-            );
-  } else if(this.doesExist === true){
-    let omString = ''
-    this.omissions.forEach((omission) => {
-      omString += `   -- ${omission} \n`
-    })
-    console.log(
-      `  ${String(logRoot).red} \n${String(omString).yellow}`
-    )
+  require('../config/locales').then(i18n => {
 
-  }
+    const logRoot = `${language}.${this.fullRoot}`
+
+    // if triggeredByParent===false AND doesExist===true we know it is the
+    // child of a missing object, so there is no need to show it to the user
+    if(this.doesExist === false && !this.parentTriggered){
+      let missingObjectStr = String(i18n.t('nest.missingObject'))
+      console.log(
+              `  ${missingObjectStr.red}${String(logRoot).yellow}\n`
+              );
+    } else if(this.doesExist === true){
+      let omString = ''
+      this.omissions.forEach((omission) => {
+        omString += `   -- ${omission} \n`
+      })
+      console.log(
+        `  ${String(logRoot).red} \n${String(omString).yellow}`
+      )
+
+    }
+
+  }).catch(logError)
 
 }
 

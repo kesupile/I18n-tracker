@@ -2,7 +2,8 @@ const
   colors = require('colors'),
   Nest = require('./Nest'),
   Comparison = require('./Comparison'),
-  { logOmissions } = require('./PrototypeMethods')
+  { logOmissions } = require('./PrototypeMethods'),
+  logError = require('../private/logError')
 
 function Omissions(root){
   if(!root || typeof root !== 'string'){
@@ -49,26 +50,33 @@ Omissions.prototype.newComparison = function(langName){
 
 Omissions.prototype.logOmissions = function(languages) {
 
-  let omissions = false
+  require('../config/locales').then(i18n => {
 
-  this.comparisons.forEach((comparison) => {
-    if(!comparison.clear){omissions = true}
-  })
 
-  if(!omissions){
-    console.log(String(`\n \n         NO MISSING PROPS IN TRANSLATIONS     `).yellow)
-    return
-  }
+    let omissions = false
 
-  this.comparisons.forEach((comparison) => {
+    this.comparisons.forEach((comparison) => {
+      if(!comparison.clear){omissions = true}
+    })
 
-    if(comparison.clear){return }
+    if(!omissions){
+      console.log(String(`\n \n         ${i18n.t('omissions.noOmissions')}     `).yellow)
+      return
+    }
 
-    const lang = languages.filter((language) => language[0] === comparison.language)
-    console.log(`\n \n \n             *** ${lang[0][1]} ***`);
-    comparison.logOmissions()
-    comparison.nestOmissions.forEach((nest) => nest.logOmissions(comparison.language))
-  })
+    this.comparisons.forEach((comparison) => {
+
+      if(comparison.clear){return }
+
+      const lang = languages.filter((language) => language[0] === comparison.language)
+      console.log(`\n \n \n             *** ${lang[0][1]} ***`);
+      comparison.logOmissions()
+      comparison.nestOmissions.forEach((nest) => nest.logOmissions(comparison.language))
+    })
+
+
+
+  }).catch(logError)
 }
 
 
