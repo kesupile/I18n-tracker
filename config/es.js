@@ -1,5 +1,14 @@
 module.exports = {
-  complete: {
+  omissions: {
     noOmissions: 'NO HAY PROPOSICIONES EN TRADUCCIONES'
+  },
+  nest: {
+    missingObject: 'Objeto perdido: '
+  },
+  errors: {
+    configMissing: 'i18n-tracker.config.json desaparecido',
+    baseNotArray: 'i18n-tracker.config.json requiere una propiedad base del tipo Array',
+    translationsRequired: 'i18n-tracker.config.json requiere una propiedad de traducción con al menos una entrada',
+    translationFileMisisng: 'FICHERO DE TRADUCCIÓN: '
   }
 }
