@@ -30,7 +30,7 @@ Two required properties: base (Array), translations (Object)
   }
 }
 ```
-Add this file to your **gitignore** if you don't want to push it to github
+Add this file to your **gitignore** if you don't want to push it to github. **NOTE:** This file is needed if you intend to use [i18n-tracker-helper](#get-translations)
 
 ##### ./en.js
 ```javascript
