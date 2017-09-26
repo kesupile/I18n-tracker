@@ -1,6 +1,6 @@
 # i18n-tracker
 i18n-tracker is a command line tool that monitors the state of your I18n translation files and makes sure that none of your translation properties slip through the cracks. This package aims to make managing your translations simpler and works well with i18n based packages such as [this](https://github.com/JSxMachina/react-i18nify).
-i18n-tracker logs messages in either English, Spanish, German and French, depending on what locale your OS is set to.
+i18n-tracker logs messages in either English, Spanish, German or French, depending on what locale your OS is set to.
 
 ## Contents
 1. [Setup](#setup)
