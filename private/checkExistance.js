@@ -1,12 +1,12 @@
-module.exports = (dir, translations) => { //expecting an array
+module.exports = (dir, translations, i18n) => { //expecting an array
 
   translations.forEach((translation) => {
     try {
       require(`${dir}\\${translation[0]}`)
     } catch (e) {
-      throw new Error(`${translation[1]} TRANSLATION FILE MISSING: ${translation[0]}.js`)
+      throw new Error(`${i18n.t('errors.translationFileMisisng')}${translation[0]}.js`)
     }
   })
-  
+
   return true
 }
