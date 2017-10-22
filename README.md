@@ -88,14 +88,17 @@ $ i18n-track
 
 
 ## Automatic Injection
-i18n-tracker can inject the missing props into your translation files with little effort. To do this you must add a **placeholder** property to your **i18n-tracker.config.json**. The placeholder can be set to any string of your choosing. Alternatively you can use the default setting by setting the placeholder property ```true```, in which case the placeholder will be ***"___REPLACE ME___"***. After that simply run the following command:
+i18n-tracker can inject the missing props into your translation files with very little effort. To do this you must add a **placeholder** property to your **i18n-tracker.config.json**. The placeholder can be set to any string of your choosing. Alternatively you can use the default string by setting the placeholder property ```true```, in which case the placeholder will be ***"___REPLACE ME___"***. After that simply run the following command:
 
 ##### command
 ```
 $ i18n-track
 ```
 
-####
+###### Result
+![alt text](https://github.com/kesupile/I18n-tracker/blob/master/images/before_after_automatic_injection.png?raw=true "i18n-track injection result")
+
+Note the console will still log the missing properties to the console for your reference.
 
 ## Get Translations
 
@@ -149,7 +152,6 @@ I18n.setTranslations(translations)
 ```
 
 ## Upcoming Features
-1. In version 1.2.0 i18n-tracker will automatically populate missing fields.
-2. In version 1.3.0 i18n-tracker will be able to track additional props in translation files that are missing in the base file
+1. In version 1.3.0 i18n-tracker will be able to track additional props in translation files that are missing in the base file
 
 Feel free to request features for this or the [i18n-tracker-helper](https://github.com/kesupile/i18n-tracker-helper) module. Stay tuned!
