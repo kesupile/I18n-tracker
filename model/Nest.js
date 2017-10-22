@@ -63,31 +63,27 @@ Nest.prototype.clone = function(parent){
   return clone
 }
 
-Nest.prototype.logOmissions = function(language){
+Nest.prototype.logOmissions = function(language, i18n){
 
-  require('../config/locales').then(i18n => {
+  const logRoot = `${language}.${this.fullRoot}`
 
-    const logRoot = `${language}.${this.fullRoot}`
+  // if triggeredByParent===false AND doesExist===true we know it is the
+  // child of a missing object, so there is no need to show it to the user
+  if(this.doesExist === false && !this.parentTriggered){
+    let missingObjectStr = String(i18n.t('nest.missingObject'))
+    console.log(
+            `  ${missingObjectStr.red}${String(logRoot).yellow}\n`
+            );
+  } else if(this.doesExist === true){
+    let omString = ''
+    this.omissions.forEach((omission) => {
+      omString += `   -- ${omission} \n`
+    })
+    console.log(
+      `  ${String(logRoot).red} \n${String(omString).yellow}`
+    )
 
-    // if triggeredByParent===false AND doesExist===true we know it is the
-    // child of a missing object, so there is no need to show it to the user
-    if(this.doesExist === false && !this.parentTriggered){
-      let missingObjectStr = String(i18n.t('nest.missingObject'))
-      console.log(
-              `  ${missingObjectStr.red}${String(logRoot).yellow}\n`
-              );
-    } else if(this.doesExist === true){
-      let omString = ''
-      this.omissions.forEach((omission) => {
-        omString += `   -- ${omission} \n`
-      })
-      console.log(
-        `  ${String(logRoot).red} \n${String(omString).yellow}`
-      )
-
-    }
-
-  }).catch(logError)
+  }
 
 }
 
