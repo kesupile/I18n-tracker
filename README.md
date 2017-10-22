@@ -88,7 +88,7 @@ $ i18n-track
 
 
 ## Automatic Injection
-i18n-tracker can inject the missing props into your translation files with very little effort. To do this you must add a **placeholder** property to your **i18n-tracker.config.json**. The placeholder can be set to any string of your choosing. Alternatively you can use the default string by setting the placeholder property to ```true```, in which case the placeholder will be **"\_\__REPLACE ME\_\__"**. After that simply run the following command:
+i18n-tracker can inject the missing props into your translation files with very little effort. To do this you must add a **placeholder** property to your **i18n-tracker.config.json**. The placeholder can be set to any string of your choosing. Alternatively you can use the default string by setting the placeholder property to ```true```, in which case the placeholder will be **"\_\_\_REPLACE ME\_\_\_"**. After that simply run the following command:
 
 ##### command
 ```
