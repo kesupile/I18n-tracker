@@ -9,6 +9,10 @@ module.exports = {
     configMissing: 'i18n-tracker.config.json missing',
     baseNotArray: 'i18n-tracker.config.json requires a base property of type Array',
     translationsRequired: 'i18n-tracker.config.json requires a translation property with at least one entry',
-    translationFileMisisng: 'TRANSLATION FILE MISSING: '
+    translationFileMisisng: 'TRANSLATION FILE MISSING: ',
+    placeholderWrongType: 'placeholder prop must be a string or true'
+  },
+  completed: {
+    missingPropsInserted: 'MISSING PROPS HAVE BEEN INSERTED'
   }
 }
