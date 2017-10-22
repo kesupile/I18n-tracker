@@ -5,8 +5,9 @@ i18n-tracker logs messages in either English, Spanish, German or French, dependi
 ## Contents
 1. [Setup](#setup)
 2. [Track](#track)
-3. [Get Translations](#get-translations)
-4. [Upcoming Features](#upcoming-features)
+3. [Automatic Injection](#automatic-injection)
+4. [Get Translations](#get-translations)
+5. [Upcoming Features](#upcoming-features)
 
 
 ## Setup
@@ -84,6 +85,17 @@ $ i18n-track
 
 ##### Result
 ![alt text](https://github.com/kesupile/I18n-tracker/blob/master/images/track_example.PNG?raw=true "i18n-track result")
+
+
+## Automatic Injection
+i18n-tracker can inject the missing props into your translation files with little effort. To do this you must add a **placeholder** property to your **i18n-tracker.config.json**. The placeholder can be set to any string of your choosing. Alternatively you can use the default setting by setting the placeholder property ```true```, in which case the placeholder will be ***"___REPLACE ME___"***. After that simply run the following command:
+
+##### command
+```
+$ i18n-track
+```
+
+####
 
 ## Get Translations
 
