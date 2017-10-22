@@ -4,5 +4,6 @@
     "de": "German",
     "fr": "French",
     "es": "Spanish"
-  }
+  },
+  "placeholder": "__REPLACE ME__"
 }
