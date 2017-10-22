@@ -71,7 +71,8 @@ Omissions.prototype.logOmissions = function(languages) {
       const lang = languages.filter((language) => language[0] === comparison.language)
       console.log(`\n \n \n             *** ${lang[0][1]} ***`);
       comparison.logOmissions()
-      comparison.nestOmissions.forEach((nest) => nest.logOmissions(comparison.language))
+      comparison.nestOmissions.forEach((nest) => {
+        nest.logOmissions(comparison.language, i18n)})
     })
 
 
